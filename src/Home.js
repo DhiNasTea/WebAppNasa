@@ -4,20 +4,19 @@ import BlogList from "./BlogList";
 const Home = () => {
   const [request, setRequest] = useState('https://api.nasa.gov/planetary/apod?api_key=fwa5UvpIxLLUa9c7KkqeoIJah4csTEzhNKxe6ai6')
   const [newPost, setNewPost] = useState(true)
-  const [count, setCount] = useState(1)
 
   const [posts, setPosts] = useState([]);
-  const [isPending, setIsPending] = useState(false);
+  const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState(null);
 
 
   
   function getPostFromUrl(url, count) {
 
-
+    // create url with "&[count] appended at the end"
     const newUrl = url + '&count=' + count;
     console.log(newUrl)
-    setCount(count + 1)
+  
 
 
     return fetch(newUrl)
@@ -26,12 +25,10 @@ const Home = () => {
       if (newPost) {
         console.log("success")
         console.log(responseJson.url)
-        if (count = 1) {
+        
         // setPosts(posts => [...posts, {imagePath : responseJson.url, author: responseJson.copyright, title: responseJson.title, id: 5, new: true}])
           setPosts(posts => [...posts, ...responseJson])
-        } else {
-          return
-        }
+      
 
         console.log("posts in home: ", posts)
         setNewPost(false)
