@@ -2,6 +2,11 @@
   "name": "nasa-web-app",
   "version": "0.1.0",
   "private": true,
+  "engines":{
+    "npm" : "8.1.2",
+    "node": "v17.1.0"
+  },
+
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
